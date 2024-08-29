@@ -1,0 +1,162 @@
+/* GLOBALS */
+body {
+  font-family: verdana;
+  font-size: 12px;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+/* HEADER */
+
+.header-container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  height: 120px;
+  align-items: center;
+}
+
+.logo {
+  width: 78px;
+  height: 35px;
+}
+
+.header-search {
+  flex: 5;
+  display: flex;
+  justify-content: center;
+}
+.header-search input {
+  width: 500px;
+  background-color: #f5f6f7;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex: 4;
+}
+
+.header-buttons button {
+  color: #2cb1ba;
+  background-color: white;
+  height: 30px;
+  width: 115px;
+  border: 1px solid #2cb1ba;
+  border-radius: 5px;
+  font-size: 12px;
+  outline: none;
+}
+
+.header-buttons button.sell {
+  color: white;
+  background-color: #2cb1ba;
+}
+.loginsignup {
+  display: flex;
+  gap: 20px;
+}
+
+.sell {
+  color: white;
+  background-color: #2cb1ba;
+  width: 186px;
+  height: 44px;
+  border: none;
+  border-radius: 5px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  height: 455px;
+  width: 100%;
+  background-image: url(/src/assets/Vite\ +\ React_files/hero-24963eb2.jpg);
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 270px;
+  width: 410px;
+  background-color: white;
+  margin-left: 50px;
+  border-radius: 5px;
+  border: 1px lightgrey solid;
+  padding: 20px;
+}
+
+/* HOME MAIN */
+
+.offer-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 40px 123px 40px 80px;
+}
+
+.offer-container {
+  width: 1280px;
+  flex: 1;
+  display: flex;
+}
+
+.offer-card {
+  cursor: pointer;
+  display: flex;
+  width: 235px;
+  height: 475px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.owner-card {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 215px;
+  height: 25px;
+  padding: 10px;
+}
+
+.owner-card img {
+  height: 25px;
+  width: 25px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.picture {
+  width: 235px;
+  height: 360px;
+  object-fit: cover;
+}
+
+.bottom-offer-card {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* OFFER */
+
+.col-left {
+  width: 450px;
+  height: 600px;
+}
