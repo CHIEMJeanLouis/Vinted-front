@@ -37,7 +37,7 @@ const Home = () => {
       <div className="offer-section">
         {data.map((offer, index) => {
           return (
-            <div key={index} className="offer-container">
+            <div key={offer._id} className="offer-container">
               <div className="offer-card">
                 <div
                   className="owner-card"
@@ -45,10 +45,13 @@ const Home = () => {
                     alert("Go to the User Profil");
                   }}
                 >
-                  <img src={offer.owner.account.avatar.secure_url} alt="" />
+                  <img
+                    src={offer.owner.account.avatar.secure_url}
+                    alt="icone utilisateur"
+                  />
                   <span>{offer.owner.account.username}</span>
                 </div>
-                <Link to={`./offer/${offer._id}`}>
+                <Link to={`./offers/${offer._id}`}>
                   <div>
                     <img
                       className="picture"
