@@ -29,9 +29,36 @@ const Offer = () => {
     <div>Chargement ...</div>
   ) : (
     // sinon j'affiche ça :
-    <div>
-      <p>{data.product_price}</p>
-      <img src={data.product_pictures[0].url} alt={data.product_name} />
+    <div className="offer-page">
+      <div className="col-left">
+        <img src={data.product_pictures[0].url} alt={data.product_name} />
+      </div>
+      <div className="col-right">
+        <span className="offer-price">{data.product_price} €</span>
+        {data.product_details.map((detail, index) => {
+          // {
+          //   console.log("detail ===> ", detail);  ===> Objects {MARQUE: 'STRADIVARIUS'}, {ÉTAT: 'NEUF AVEC ÉTIQUETTE'}
+          // }
+          const keys = Object.keys(detail);
+          // console.log("keys ===> ", keys); ===> tableau MARQUE, ETAT, COULEUR, EMPLACEMENT
+
+          const key = keys[0];
+          // console.log("key ===> ", key); ===> clé de l'objet detail ===> MARQUE, ETAT, COULEUR,EMPLACEMENT
+
+          return (
+            <div key={index}>
+              <p>
+                {keys} : {detail[keys]};
+              </p>
+            </div>
+          );
+        })}
+        <span>{data.product_name}</span>
+        <span>{data.product_description}</span>
+        <span>{data.owner.account.username}</span>
+
+        <button>ACHETER</button>
+      </div>
     </div>
   );
 };

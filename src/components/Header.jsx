@@ -1,7 +1,11 @@
 import logo from "../assets/Vite + React_files/logo-a7c93c98.png";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
-const Header = () => {
+const Header = ({ setToken }) => {
+  const token = Cookies.get("token");
+  console.log(token);
+
   return (
     <header>
       <div className="header-container">
@@ -13,14 +17,24 @@ const Header = () => {
             <input type="text" />
           </div>
           <div className="header-buttons">
-            <div className="loginsignup">
-              <Link to="/signup">
-                <button>S'inscrire</button>
-              </Link>
-              <Link to="/login">
-                <button>Se connecter</button>
-              </Link>
-            </div>
+            {!token ? (
+              <div className="loginsignup">
+                <Link to="/signup">
+                  <button>S'inscrire</button>
+                </Link>
+                <Link to="/login">
+                  <button>Se connecter</button>
+                </Link>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  Cookies.remove("token");
+                }}
+              >
+                Deconnexion
+              </button>
+            )}
             <button className="sell">Vend tes articles</button>
           </div>
         </div>
