@@ -1,10 +1,12 @@
 import logo from "../assets/Vite + React_files/logo-a7c93c98.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Header = ({ setToken }) => {
   const token = Cookies.get("token");
   console.log(token);
+
+  const navigate = useNavigate();
 
   return (
     <header>
@@ -30,6 +32,7 @@ const Header = ({ setToken }) => {
               <button
                 onClick={() => {
                   Cookies.remove("token");
+                  navigate("/");
                 }}
               >
                 Deconnexion
