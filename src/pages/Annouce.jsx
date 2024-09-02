@@ -40,8 +40,17 @@ const Announce = ({ token }) => {
                 }
               );
               console.log(response);
+              if (response.data.status === 201) {
+                alert("Woot, annonce bien publiée !");
+              }
             } catch (error) {
               console.log(error);
+              if (
+                error.response.data.message ===
+                "title, price and picture are required"
+              ) {
+                return alert("title, price and picture are required");
+              }
             }
           }}
         >
