@@ -4,7 +4,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, isConnected, setIsConnected }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +26,9 @@ const Login = ({ setToken }) => {
           const token = request.data.token; //  bkUK-u2WdvwABXtP2rhST3_y5xjuXpe7p6hOd0u7yn-nU6Y3I8bzcbKBiLYUkR3O pour "lagusensei"
           Cookies.set("token", token, { expires: 7 });
           setToken(Cookies.get("token"));
-          navigate("/");
+          isConnected ? navigate("/announce") : navigate("/");
+          setIsConnected(false);
+          console.log(isConnected);
         }}
       >
         <h1>Se connecter</h1>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ input }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +10,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/v2/offers?title=${input}`
         );
         setData(response.data.offers);
         setLoading(false);
@@ -20,7 +20,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, []);
+  }, [{ input }]);
 
   return loading ? (
     // si j'ai pas ma réponse j'affiche ça :
@@ -45,10 +45,12 @@ const Home = () => {
                     alert("Go to the User Profil");
                   }}
                 >
-                  <img
-                    src={offer.owner.account.avatar.secure_url}
-                    alt="icone utilisateur"
-                  />
+                  {offer.owner.account.avatar && (
+                    <img
+                      src={offer.owner.account.avatar.secure_url}
+                      alt="icone utilisateur"
+                    />
+                  )}
                   <span>{offer.owner.account.username}</span>
                 </div>
                 <Link to={`./offers/${offer._id}`}>

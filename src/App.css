@@ -43,6 +43,15 @@ h1 {
   flex: 4;
 }
 
+.sell {
+  cursor: pointer;
+}
+
+header .deconnect-button {
+  background-color: #c2175b;
+  color: white;
+}
+
 .header-buttons button {
   color: #2cb1ba;
   background-color: white;
@@ -160,6 +169,7 @@ h1 {
   display: flex;
   margin: 0 auto;
   width: 100%;
+  height: 100vh;
   justify-content: space-between;
   background-color: #eaedee;
 }
@@ -167,21 +177,31 @@ h1 {
 .col-left {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 30px;
   flex: 1;
-  width: 450px;
+}
+
+.col-left img {
+  height: 70%;
+  width: 60%;
+  object-fit: cover;
 }
 
 .col-right {
+  background-color: white;
+  margin: 30px auto;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   flex: 1;
+  border: 1px solid black;
 }
 
 .offer-price {
   font-size: 25px;
+  margin-bottom: 20px;
 }
 
 /* SIGN UP */

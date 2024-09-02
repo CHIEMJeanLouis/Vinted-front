@@ -36,7 +36,7 @@ const Signup = () => {
         setErrorMessage("Email déjà existant");
       } else {
         setErrorMessage(
-          "Un probème est survenu, merci d'essayer ultérieurement"
+          "Un problème est survenu, merci d'essayer ultérieurement"
         );
       }
     }

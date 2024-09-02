@@ -46,11 +46,12 @@ const Offer = () => {
           // console.log("key ===> ", key); ===> clé de l'objet detail ===> MARQUE, ETAT, COULEUR,EMPLACEMENT
 
           return (
-            <div key={index}>
-              <p>
-                {keys} : {detail[keys]};
-              </p>
-            </div>
+            <ul key={index}>
+              <li className="offer-list">
+                <span>{keys}</span>
+                <span>{detail[keys]}</span>
+              </li>
+            </ul>
           );
         })}
         <span>{data.product_name}</span>

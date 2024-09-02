@@ -1,11 +1,12 @@
 import logo from "../assets/Vite + React_files/logo-a7c93c98.png";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Cookies from "js-cookie";
+import axios from "axios";
 
-const Header = ({ setToken }) => {
+const Header = ({ input, setInput }) => {
   const token = Cookies.get("token");
-  console.log(token);
-
+  // console.log(token);
   const navigate = useNavigate();
 
   return (
@@ -16,7 +17,13 @@ const Header = ({ setToken }) => {
             <img className="logo" src={logo} alt="logo vinted" />
           </Link>
           <div className="header-search">
-            <input type="text" />
+            <input
+              type="text"
+              placeholder="Chercher un article"
+              onChange={(event) => {
+                setInput(event.target.value);
+              }}
+            />
           </div>
           <div className="header-buttons">
             {!token ? (
@@ -30,6 +37,7 @@ const Header = ({ setToken }) => {
               </div>
             ) : (
               <button
+                className="deconnect-button"
                 onClick={() => {
                   Cookies.remove("token");
                   navigate("/");
@@ -38,7 +46,22 @@ const Header = ({ setToken }) => {
                 Deconnexion
               </button>
             )}
-            <button className="sell">Vend tes articles</button>
+            {!token ? (
+              <Link to="/login">
+                <button
+                  className="sell"
+                  onClick={() => {
+                    setIsConnected(true);
+                  }}
+                >
+                  Vend tes articles
+                </button>
+              </Link>
+            ) : (
+              <Link to="/announce">
+                <button className="sell">Vend tes articles</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
