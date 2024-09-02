@@ -1,8 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
 
-const Announce = () => {
+const Announce = ({ token }) => {
   const [checkbox, SetCheckBox] = useState(false);
+  const [title, setTitle] = useState("");
+  const [picture, setPicture] = useState({});
+  const [price, setPrice] = useState("");
+  const [brand, setBrand] = useState("");
+  const [color, setColor] = useState("");
+  const [status, setStatus] = useState("");
+  const [description, setDescription] = useState("");
 
   return (
     <div style={{ backgroundColor: "#EAEDEE" }}>
@@ -10,15 +17,45 @@ const Announce = () => {
       <div className="announce-container">
         <form
           className="announce-form"
-          onSubmit={(e) => {
-            e.preventDefault();
+          onSubmit={async (e) => {
+            try {
+              e.preventDefault();
+              const formData = new FormData();
+              formData.append("title", title);
+              formData.append("price", price);
+              formData.append("picture", picture);
+              formData.append("color", color);
+              formData.append("status", status);
+              formData.append("brand", brand);
+              formData.append("descrition", description);
+
+              const response = await axios.post(
+                " https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+                formData,
+                {
+                  headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-Type": "multipart:form-data",
+                  },
+                }
+              );
+              console.log(response);
+            } catch (error) {
+              console.log(error);
+            }
           }}
         >
           <div className="sell-block-add">
             <div className="dashed-effect">
-              <label for="addfile">
+              <label htmlFor="addfile">
                 <span> + Ajouter une photo</span>
-                <input type="file" id="addfile" />
+                <input
+                  type="file"
+                  id="addfile"
+                  onChange={(e) => {
+                    setPicture(e.target.files[0]);
+                  }}
+                />
               </label>
             </div>
           </div>
@@ -29,7 +66,14 @@ const Announce = () => {
               </div>
 
               <div className="sell-block-input">
-                <input type="text" placeholder="ex:Chemise Sézane verte" />
+                <input
+                  type="text"
+                  placeholder="ex:Chemise Sézane verte"
+                  value={title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                />
               </div>
             </div>
             <div className="block">
@@ -37,7 +81,12 @@ const Announce = () => {
                 <h3>Décris ton article</h3>
               </div>
               <div className="sell-block-input">
-                <textarea placeholder="ex: porté quelquefois, taille correctement"></textarea>
+                <textarea
+                  placeholder="ex: porté quelquefois, taille correctement"
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                  }}
+                ></textarea>
               </div>
             </div>
           </div>
@@ -48,7 +97,13 @@ const Announce = () => {
                 <h3>Marque</h3>
               </div>
               <div className="sell-block-input">
-                <input type="text" placeholder="ex:Zara" />
+                <input
+                  type="text"
+                  placeholder="ex:Zara"
+                  onChange={(e) => {
+                    setBrand(e.target.value);
+                  }}
+                />
               </div>
             </div>
             <div className="block">
@@ -56,7 +111,13 @@ const Announce = () => {
                 <h3>Taille</h3>
               </div>
               <div className="sell-block-input">
-                <input type="text" placeholder="ex: L/40/12" />
+                <input
+                  type="text"
+                  placeholder="ex: L/40/12"
+                  onChange={(e) => {
+                    setSize(e.target.value);
+                  }}
+                />
               </div>
             </div>
             <div className="block">
@@ -64,7 +125,13 @@ const Announce = () => {
                 <h3>Couleur</h3>
               </div>
               <div className="sell-block-input">
-                <input type="text" placeholder="ex:Fushia" />
+                <input
+                  type="text"
+                  placeholder="ex:Fushia"
+                  onChange={(e) => {
+                    setColor(e.target.value);
+                  }}
+                />
               </div>
             </div>
             <div className="block">
@@ -72,7 +139,13 @@ const Announce = () => {
                 <h3>Etat</h3>
               </div>
               <div className="sell-block-input">
-                <input type="text" placeholder="Neuf avec étiquette" />
+                <input
+                  type="text"
+                  placeholder="Neuf avec étiquette"
+                  onChange={(e) => {
+                    setStatus(e.target.value);
+                  }}
+                />
               </div>
             </div>
             <div className="block">
@@ -98,7 +171,14 @@ const Announce = () => {
                 }}
               >
                 <div className="sell-block-input">
-                  <input type="text" placeholder="0,00€" />
+                  <input
+                    type="text"
+                    placeholder="0,00€"
+                    value={price}
+                    onChange={(e) => {
+                      setPrice(Number(e.target.value));
+                    }}
+                  />
                 </div>
                 <div style={{ display: "flex" }}>
                   <input

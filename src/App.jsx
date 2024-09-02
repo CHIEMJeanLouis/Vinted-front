@@ -26,10 +26,10 @@ function App() {
     <>
       <Router>
         <Header
-          input={input}
           setInput={setInput}
           isConnected={isConnected}
           setIsConnected={setIsConnected}
+          token={token}
         />
         <Routes>
           <Route path="/" element={<Home input={input} />} />
@@ -46,7 +46,7 @@ function App() {
           />
           <Route path="/signup" element={<Signup setToken={setToken} />} />
           <Route path="/offers?:query" element={<Search />} />
-          <Route path="/announce" element={<Announce />} />
+          <Route path="/announce" element={<Announce token={token} />} />
         </Routes>
       </Router>
     </>
