@@ -36,7 +36,11 @@ const Header = ({ input, setInput, setIsConnected }) => {
               </div>
             ) : (
               <button
-                className="deconnect-button"
+                style={{
+                  backgroundColor: "#c2175b",
+                  color: "white",
+                  border: "none",
+                }}
                 onClick={() => {
                   Cookies.remove("token");
                   navigate("/");

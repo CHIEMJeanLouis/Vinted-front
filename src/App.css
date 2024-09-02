@@ -8,6 +8,14 @@ h1 {
   font-size: 34px;
 }
 
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 15px;
+}
+
 /* HEADER */
 
 .header-container {
@@ -45,11 +53,6 @@ h1 {
 
 .sell {
   cursor: pointer;
-}
-
-header .deconnect-button {
-  background-color: #c2175b;
-  color: white;
 }
 
 .header-buttons button {
@@ -257,4 +260,120 @@ form button {
 
 .form-link a:active {
   text-decoration: none;
+}
+
+/* ANNOUNCE / SELL */
+
+.announce-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 1280px;
+}
+
+.announce-h2 {
+  margin-left: 72px;
+  padding: 30px 0px;
+}
+.announce-form {
+  display: flex;
+  gap: 15px;
+}
+
+.sell-block-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d3d4d5;
+  width: 1280px;
+  height: 250px;
+  background-color: white;
+}
+
+.all-blocks {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #d3d4d5;
+  width: 1280px;
+  height: 250px;
+  background-color: white;
+  flex-direction: column;
+}
+
+.block {
+  display: flex;
+  justify-content: flex-start;
+  width: 1280px;
+}
+
+.sell-block-detail {
+  display: flex;
+  flex: 1;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+.sell-block-input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  padding-top: 20px;
+}
+
+.sell-block-input > textarea {
+  width: 500px;
+  height: 150px;
+}
+
+.sell-block-input input {
+  border: none;
+  border-bottom: 1px solid #d3d4d5;
+  height: 30px;
+  width: 500px;
+}
+
+.dashed-effect {
+  border: 1px dashed #eaedee;
+  width: 1230px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label span {
+  font-size: 18px;
+  border: 2px solid #2db0ba;
+  color: #2db0ba;
+  width: 200px;
+  padding: 15px;
+  border-radius: 5%;
+}
+
+.all-blocks-last {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #d3d4d5;
+  width: 1280px;
+  height: 130px;
+  background-color: white;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.announce-button-add {
+  background-color: #09b0ba;
+  color: white;
+  width: 75px;
+  height: 45px;
+  border-radius: 5%;
 }
