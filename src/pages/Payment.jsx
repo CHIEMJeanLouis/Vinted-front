@@ -13,7 +13,7 @@ const Payment = () => {
   const location = useLocation();
   const { title } = location.state;
   const { price } = location.state;
-  console.log(title, price);
+  // console.log(title, price);
 
   const options = {
     mode: "payment",

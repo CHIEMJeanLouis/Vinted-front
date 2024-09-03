@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Search from "./pages/Search";
 import Announce from "./pages/Annouce";
 import Payment from "./pages/Payment";
 
@@ -44,7 +43,6 @@ function App() {
             }
           />
           <Route path="/signup" element={<Signup setToken={setToken} />} />
-          <Route path="/offers?:query" element={<Search />} />
           <Route path="/announce" element={<Announce token={token} />} />
           <Route path="/payment" element={<Payment />} />
         </Routes>

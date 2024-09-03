@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const CheckoutForm = ({ title, price }) => {
-  console.log(title, price);
+  // console.log(title, price);
   const stripe = useStripe();
   const elements = useElements();
 
