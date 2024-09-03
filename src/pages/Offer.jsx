@@ -74,7 +74,10 @@ const Offer = () => {
         <div className="col-right-bottom">
           <Link
             to="/payment"
-            state={{ title: data.product_name, price: data.product_price }}
+            state={{
+              title: data.product_name,
+              price: data.product_price * 100,
+            }}
           >
             <button>ACHETER</button>
           </Link>

@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -10,19 +10,21 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const token = Cookies.get("token");
+  const location = useLocation();
+  const { title } = location.state;
+  const { price } = location.state;
+  console.log(title, price);
 
   const options = {
     mode: "payment",
-    amount: 590,
+    amount: price,
     currency: "eur",
   };
 
   return token ? (
-    <div>
-      <Elements stripe={stripePromise} options={options}>
-        <CheckoutForm />
-      </Elements>
-    </div>
+    <Elements stripe={stripePromise} options={options}>
+      <CheckoutForm title={title} price={price} />
+    </Elements>
   ) : (
     <Navigate to="/login" />
   );

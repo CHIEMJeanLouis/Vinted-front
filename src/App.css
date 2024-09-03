@@ -448,3 +448,27 @@ label span {
 .addfile {
   cursor: pointer;
 }
+
+/* PAYMENT */
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.payment-form button {
+  cursor: pointer;
+}
+
+.succeed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+  text-decoration: underline;
+  gap: 100px;
+}

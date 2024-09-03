@@ -4,9 +4,11 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ title, price }) => {
+  console.log(title, price);
   const stripe = useStripe();
   const elements = useElements();
 
@@ -32,8 +34,8 @@ const CheckoutForm = () => {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/v2/payment",
         {
-          title: "Robe H&M 4/6 ans",
-          amount: 590,
+          title: title,
+          amount: price,
         }
       );
 
@@ -55,14 +57,21 @@ const CheckoutForm = () => {
       if (paymentIntent.status === "succeeded") {
         setCompleted(true);
       }
-      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
 
-    return completed ? (
-      <p> Merci pour votre achat !</p>
-    ) : (
+    setIsLoading(false);
+  };
+
+  return completed ? (
+    <div className="succeed">
+      <h2> Merci pour votre achat</h2>
+      <Link to="/">Cliquez ici pour revenir sur le site marchand</Link>
+    </div>
+  ) : (
+    <div className="payment-form">
+      <h2>Paiment d'un montant de {price / 100}€</h2>
       <form onSubmit={handleSubmit}>
         <PaymentElement />
         <button type="submit" disabled={!stripe || !elements || isLoading}>
@@ -70,7 +79,8 @@ const CheckoutForm = () => {
         </button>
         {errorMessage && <div>{errorMessage}</div>}
       </form>
-    );
-  };
+    </div>
+  );
 };
+
 export default CheckoutForm;
