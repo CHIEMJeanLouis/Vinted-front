@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Cookies from "js-cookie";
 import { useState } from "react";
-import axios from "axios";
 
 //Pages
 
@@ -29,10 +28,9 @@ function App() {
           setInput={setInput}
           isConnected={isConnected}
           setIsConnected={setIsConnected}
-          token={token}
         />
         <Routes>
-          <Route path="/" element={<Home input={input} />} />
+          <Route path="/" element={<Home input={input} token={token} />} />
           <Route path="offers/:id" element={<Offer />} />
           <Route
             path="/login"

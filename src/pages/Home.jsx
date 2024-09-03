@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Home = ({ input }) => {
+const Home = ({ input, token }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,7 +31,16 @@ const Home = ({ input }) => {
       <div className="hero">
         <div className="home-hero">
           <h1>Prêt à faire du tri dans vos placards ?</h1>
-          <button className="sell">Commencer à vendre</button>
+          {token ? (
+            <Link to="/announce">
+              {" "}
+              <button className="sell">Commencer à vendre</button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button className="sell">Commencer à vendre</button>
+            </Link>
+          )}
         </div>
       </div>
       <div className="offer-section">

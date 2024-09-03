@@ -2,8 +2,9 @@ import logo from "../assets/Vite + React_files/logo-a7c93c98.png";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Header = ({ setInput, setIsConnected, token }) => {
+const Header = ({ setInput, setIsConnected }) => {
   const navigate = useNavigate();
+  const token = Cookies.get("token");
 
   return (
     <header>
