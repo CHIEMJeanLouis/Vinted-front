@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import FormDetails from "../components/FormDetails";
 
 const Announce = ({ token }) => {
   const [checkbox, SetCheckBox] = useState(false);
@@ -8,8 +9,13 @@ const Announce = ({ token }) => {
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
   const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+  const [city, setCity] = useState("");
   const [status, setStatus] = useState("");
   const [description, setDescription] = useState("");
+  const setSomething = (e) => {
+    setSomething(e.target.value);
+  };
 
   return (
     <div style={{ backgroundColor: "#EAEDEE" }}>
@@ -27,6 +33,8 @@ const Announce = ({ token }) => {
               formData.append("color", color);
               formData.append("status", status);
               formData.append("brand", brand);
+              formData.append("size", size);
+              formData.append("city", city);
               formData.append("descrition", description);
 
               const response = await axios.post(
@@ -69,22 +77,11 @@ const Announce = ({ token }) => {
             </div>
           </div>
           <div className="all-blocks">
-            <div className="block">
-              <div className="sell-block-detail">
-                <h3>Titre</h3>
-              </div>
-
-              <div className="sell-block-input">
-                <input
-                  type="text"
-                  placeholder="ex:Chemise Sézane verte"
-                  value={title}
-                  onChange={(e) => {
-                    setTitle(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
+            <FormDetails
+              title="Titre"
+              setSomething={setTitle}
+              placeholder="ex:Chemise Sézane verte"
+            />
             <div className="block">
               <div className="sell-block-detail">
                 <h3>Décris ton article</h3>
@@ -101,69 +98,40 @@ const Announce = ({ token }) => {
           </div>
 
           <div className="all-blocks">
+            <FormDetails
+              title="Marque"
+              placeholder="ex:Zara"
+              setSomething={setBrand}
+            />
+
             <div className="block">
-              <div className="sell-block-detail">
-                <h3>Marque</h3>
-              </div>
-              <div className="sell-block-input">
-                <input
-                  type="text"
-                  placeholder="ex:Zara"
-                  onChange={(e) => {
-                    setBrand(e.target.value);
-                  }}
-                />
-              </div>
+              <FormDetails
+                title="Taille"
+                placeholder="ex: L/40/12"
+                setSomething={setSize}
+              />
             </div>
             <div className="block">
-              <div className="sell-block-detail">
-                <h3>Taille</h3>
-              </div>
-              <div className="sell-block-input">
-                <input
-                  type="text"
-                  placeholder="ex: L/40/12"
-                  onChange={(e) => {
-                    setSize(e.target.value);
-                  }}
-                />
-              </div>
+              <FormDetails
+                title="Couleur"
+                placeholder="ex: Fushia"
+                setSomething={setColor}
+              />
+            </div>
+
+            <div className="block">
+              <FormDetails
+                title="Etat"
+                placeholder="Neuf avec étiquette"
+                setSomething={setStatus}
+              />
             </div>
             <div className="block">
-              <div className="sell-block-detail">
-                <h3>Couleur</h3>
-              </div>
-              <div className="sell-block-input">
-                <input
-                  type="text"
-                  placeholder="ex:Fushia"
-                  onChange={(e) => {
-                    setColor(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-            <div className="block">
-              <div className="sell-block-detail">
-                <h3>Etat</h3>
-              </div>
-              <div className="sell-block-input">
-                <input
-                  type="text"
-                  placeholder="Neuf avec étiquette"
-                  onChange={(e) => {
-                    setStatus(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-            <div className="block">
-              <div className="sell-block-detail">
-                <h3>Lieu</h3>
-              </div>
-              <div className="sell-block-input">
-                <input type="text" placeholder="ex:Paris" />
-              </div>
+              <FormDetails
+                title="Lieu"
+                placeholder="ex: Paris"
+                setSomething={setCity}
+              />
             </div>
           </div>
 
@@ -185,6 +153,9 @@ const Announce = ({ token }) => {
                     placeholder="0,00€"
                     value={price}
                     onChange={(e) => {
+                      // if (!Number) {
+                      //   alert("Ce champs recquiert un nombre");
+                      // }
                       setPrice(Number(e.target.value));
                     }}
                   />
