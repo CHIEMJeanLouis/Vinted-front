@@ -15,6 +15,7 @@ const Header = ({ setInput, setIsConnected }) => {
           </Link>
           <div className="header-search">
             <input
+              className="header-input-search"
               type="text"
               placeholder="Chercher un article"
               onChange={(event) => {

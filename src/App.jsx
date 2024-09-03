@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Search from "./pages/Search";
 import Announce from "./pages/Annouce";
+import Payment from "./pages/Payment";
 
 // Composants
 
@@ -45,6 +46,10 @@ function App() {
           <Route path="/signup" element={<Signup setToken={setToken} />} />
           <Route path="/offers?:query" element={<Search />} />
           <Route path="/announce" element={<Announce token={token} />} />
+          <Route
+            path="/payment"
+            element={<Payment token={token} isConnected={isConnected} />}
+          />
         </Routes>
       </Router>
     </>

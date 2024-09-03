@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import FormDetails from "../components/FormDetails";
+import { Navigate } from "react-router-dom";
 
 const Announce = ({ token }) => {
   const [checkbox, SetCheckBox] = useState(false);
@@ -17,7 +18,7 @@ const Announce = ({ token }) => {
     setSomething(e.target.value);
   };
 
-  return (
+  return token ? (
     <div style={{ backgroundColor: "#EAEDEE" }}>
       <h2 className="announce-h2">Vends ton article</h2>
       <div className="announce-container">
@@ -64,7 +65,7 @@ const Announce = ({ token }) => {
         >
           <div className="sell-block-add">
             <div className="dashed-effect">
-              <label htmlFor="addfile">
+              <label className="addfile" htmlFor="addfile">
                 <span> + Ajouter une photo</span>
                 <input
                   type="file"
@@ -73,6 +74,16 @@ const Announce = ({ token }) => {
                     setPicture(e.target.files[0]);
                   }}
                 />
+                {/* Pour afficher une preview du file selectionné */}
+
+                {/* <div>
+                  {picture && (
+                    <img
+                      src={URL.createObjectURL(picture)}
+                      alt="preview picture"
+                    />
+                  )}
+                </div> */}
               </label>
             </div>
           </div>
@@ -177,6 +188,8 @@ const Announce = ({ token }) => {
         </form>
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 export default Announce;

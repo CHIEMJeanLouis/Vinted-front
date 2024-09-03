@@ -33,7 +33,6 @@ const Home = ({ input, token }) => {
           <h1>Prêt à faire du tri dans vos placards ?</h1>
           {token ? (
             <Link to="/announce">
-              {" "}
               <button className="sell">Commencer à vendre</button>
             </Link>
           ) : (
@@ -44,7 +43,7 @@ const Home = ({ input, token }) => {
         </div>
       </div>
       <div className="offer-section">
-        {data.map((offer, index) => {
+        {data.map((offer) => {
           return (
             <div key={offer._id} className="offer-container">
               <div className="offer-card">

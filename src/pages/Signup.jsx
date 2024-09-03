@@ -26,7 +26,7 @@ const Signup = () => {
         }
       );
       console.log(response.data);
-      Cookies.set("vinted-token", response.data.token, { expires: 7 });
+      Cookies.set("token", response.data.token, { expires: 7 });
       navigate("/");
     } catch (error) {
       console.log(error);
