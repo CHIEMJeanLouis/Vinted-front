@@ -72,6 +72,10 @@ const CheckoutForm = ({ title, price }) => {
   ) : (
     <div className="payment-form">
       <h2>Paiment d'un montant de {price / 100}€</h2>
+      <div className="payment-detail">
+        <h3>Résumé de la commande</h3>
+        <p>{title}</p>
+      </div>
       <form onSubmit={handleSubmit}>
         <PaymentElement />
         <button type="submit" disabled={!stripe || !elements || isLoading}>

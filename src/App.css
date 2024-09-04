@@ -472,3 +472,10 @@ label span {
   text-decoration: underline;
   gap: 100px;
 }
+
+.payment-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
