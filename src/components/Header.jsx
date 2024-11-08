@@ -60,9 +60,11 @@ const Header = ({ setInput, setIsConnected }) => {
                 </button>
               </Link>
             ) : (
-              <Link to="/announce">
-                <button className="sell">Vend tes articles</button>
-              </Link>
+              token && (
+                <Link to="/announce">
+                  <button className="sell">Vend tes articles</button>
+                </Link>
+              )
             )}
           </div>
         </div>
